@@ -1,0 +1,31 @@
+spring:
+  datasource:
+    url: jdbc:h2:${H2_HOST:~/h2/complus-am-assignment-v2};AUTO_SERVER=TRUE
+    driverClassName: org.h2.Driver
+    username: sa
+    password: ''
+  h2:
+    console:
+      enabled: 'true'
+  jpa:
+    properties:
+      hibernate:
+        default_schema: public
+        ddl-auto: none
+    database-platform: org.hibernate.dialect.H2Dialect
+logging:
+  level:
+    root: INFO
+    com.complus.am.assignment.v2: DEBUG
+  file:
+    path: ./logs/local
+    name: ${logging.file.path}/agba.log
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  tracing:
+    enabled: true
+    sampling:
+      probability: 0

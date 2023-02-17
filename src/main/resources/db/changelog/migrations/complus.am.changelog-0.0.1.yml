@@ -1,0 +1,42 @@
+databaseChangeLog:
+  - changeSet:
+      id: '1'
+      author: WSQ
+      changes:
+        - createTable:
+            tableName: cam_trade
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: tel_mobile
+                  type: varchar(16)
+                  constraints:
+                    nullable: false
+                    unique: true
+              - column:
+                  name: account_number
+                  type: varchar(32)
+              - column:
+                  name: email
+                  type: varchar(256)
+              - column:
+                  name: biometric_enabled
+                  type: boolean
+              - column:
+                  name: biometric_info
+                  type: json
+              - column:
+                  name: access_token
+                  type: varchar(1000)
+              - column:
+                  name: fail_attempts
+                  type: int
+              - column:
+                  name: lock_date
+                  type: time
