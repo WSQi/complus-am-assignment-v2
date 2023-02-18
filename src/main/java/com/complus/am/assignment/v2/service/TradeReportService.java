@@ -25,7 +25,6 @@ public class TradeReportService {
         var handler = tradeReportRegistry.getHandlerFor(reportType)
                 .orElseThrow(() -> new IllegalArgumentException("unable to find handler: "+reportType));
         var dtos = handler.handle(brokerName, date);
-        log.info("dtos: {}", dtos);
         return csvReportService.toCsv(handler.buildHeaders(), (List<TradeReport>) dtos);
     }
 
