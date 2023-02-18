@@ -24,7 +24,7 @@ springdoc:
     path: /swagger-ui.html
 server:
   servlet:
-    context-path: /api/v1/
+    context-path: /api/
   port: '8080'
   tomcat:
     uri-encoding: UTF-8

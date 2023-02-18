@@ -19,7 +19,7 @@ logging:
     com.complus.am.assignment.v2: DEBUG
   file:
     path: ./logs/local
-    name: ${logging.file.path}/agba.log
+    name: ${logging.file.path}/complus.log
 management:
   endpoints:
     web:
