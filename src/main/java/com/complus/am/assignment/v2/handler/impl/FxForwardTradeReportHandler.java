@@ -1,6 +1,7 @@
 package com.complus.am.assignment.v2.handler.impl;
 
 import com.complus.am.assignment.v2.dao.TradeRepository;
+import com.complus.am.assignment.v2.dto.FxForwardTradeReport;
 import com.complus.am.assignment.v2.dto.TradeReport;
 import com.complus.am.assignment.v2.enumeration.TradeReportType;
 import com.complus.am.assignment.v2.handler.TradeReportHandler;
@@ -25,10 +26,15 @@ public class FxForwardTradeReportHandler implements TradeReportHandler {
     }
 
     @Override
+    public Class getTypeClass() {
+        return FxForwardTradeReport.class;
+    }
+
+    @Override
     public List<? extends TradeReport> handle(String brokerName, LocalDateTime tradeDate) {
         var trades = tradeRepository.findAllByBrokerNameAndTradeDate(brokerName, tradeDate);
         return trades.stream()
-                .map(trade -> tradeReportMapper.tradeToFxForwardTradeReport(trade))
+                .map(tradeReportMapper::tradeToFxForwardTradeReport)
                 .toList();
     }
 

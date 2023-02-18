@@ -16,7 +16,6 @@ public class TradeReportController {
 
     private final TradeReportService tradeReportService;
 
-//    @Valid
     @GetMapping(value = "/trade", produces = "text/csv")
     public byte[] getCsvTradeReport(@RequestParam @NotNull TradeReportType reportType,
                                  @RequestParam @NotNull String brokerName,
