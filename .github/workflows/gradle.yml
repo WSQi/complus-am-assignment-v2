@@ -30,6 +30,3 @@ jobs:
       #Run Tests
       - name: Run Tests
         run: ./gradlew test
-      #Build Docker Image
-      - name: Build Image
-        run: ./gradlew bootBuildImage --imageName=complus-am-assignment-v2
