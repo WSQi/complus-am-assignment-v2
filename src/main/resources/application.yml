@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: ASSIGNMENT-V2
+  data:
+    jpa:
+      repositories:
+        enabled: 'true'
+  liquibase:
+    change-log: classpath:db/changelog/complus.am.changelog-master.yml
+  profiles:
+    active: local
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: 'true'
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+springdoc:
+  api-docs:
+    enabled: 'true'
+  pathsToMatch: /**
+  swagger-ui:
+    path: /swagger-ui.html
+server:
+  servlet:
+    context-path: /api/
+  port: '8080'
+  tomcat:
+    uri-encoding: UTF-8

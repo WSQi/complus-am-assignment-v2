@@ -1,0 +1,230 @@
+databaseChangeLog:
+  - changeSet:
+      id: 'init-trade-table'
+      author: Mark Wai
+      changes:
+        - createTable:
+            tableName: trade
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: broker_name
+                  type: varchar(20)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: trade_ref
+                  type: varchar(20)
+                  constraints:
+                    nullable: false
+                    unique: true
+              - column:
+                  name: product_id
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: product_name
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: trade_date
+                  type: datetime
+                  constraints:
+                    nullable: false
+              - column:
+                  name: qty
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: buy_sell
+                  type: varchar(1)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: price
+                  type: number(30, 10)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_date
+                  type: datetime
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  constraints:
+                    nullable: false
+                  remarks: 'Created date of the record'
+              - column:
+                  name: created_by
+                  type: varchar(255)
+                  defaultValue: 'SYSTEM'
+                  constraints:
+                    nullable: false
+                  remarks: 'Created by of the record'
+              - column:
+                  name: updated_date
+                  type: datetime
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  constraints:
+                    nullable: false
+                  remarks: 'Updated date of the record'
+              - column:
+                  name: updated_by
+                  type: varchar(255)
+                  defaultValue: 'SYSTEM'
+                  constraints:
+                    nullable: false
+                  remarks: 'Updated by of the record'
+              - column:
+                  name: version
+                  type: number
+                  defaultValue: 1
+                  constraints:
+                    nullable: false
+                  remarks: 'Version of the record'
+  - changeSet:
+      id: 'init-trade-table-data'
+      author: Mark Wai
+      changes:
+        - insert:
+            tableName: trade
+            columns:
+              - column:
+                  name: broker_name
+                  value: Broker_A
+              - column:
+                  name: trade_ref
+                  value: T-FWD-1
+              - column:
+                  name: product_id
+                  value: 1
+              - column:
+                  name: product_name
+                  value: AUDNZD FRD Exp14Jul2021
+              - column:
+                  name: trade_date
+                  value: 2020-04-08 00.00.00
+              - column:
+                  name: qty
+                  value: 1000000
+              - column:
+                  name: buy_sell
+                  value: B
+              - column:
+                  name: price
+                  value: "1.067591"
+        - insert:
+            tableName: trade
+            columns:
+              - column:
+                  name: broker_name
+                  value: Broker_A
+              - column:
+                  name: trade_ref
+                  value: T-FWD-2
+              - column:
+                  name: product_id
+                  value: 2
+              - column:
+                  name: product_name
+                  value: AUDNZD FRD Exp15Jul2021
+              - column:
+                  name: trade_date
+                  value: 2020-04-08 00.00.00
+              - column:
+                  name: qty
+                  value: 8000000
+              - column:
+                  name: buy_sell
+                  value: B
+              - column:
+                  name: price
+                  value: "0.7518301"
+        - insert:
+            tableName: trade
+            columns:
+              - column:
+                  name: broker_name
+                  value: Broker_A
+              - column:
+                  name: trade_ref
+                  value: T-FWD-3
+              - column:
+                  name: product_id
+                  value: 3
+              - column:
+                  name: product_name
+                  value: AUDNZD FRD Exp15Jul2021
+              - column:
+                  name: trade_date
+                  value: 2020-04-08 00.00.00
+              - column:
+                  name: qty
+                  value: 25000000
+              - column:
+                  name: buy_sell
+                  value: B
+              - column:
+                  name: price
+                  value: "1.186073"
+        - insert:
+            tableName: trade
+            columns:
+              - column:
+                  name: broker_name
+                  value: Broker_A
+              - column:
+                  name: trade_ref
+                  value: T-FWD-4
+              - column:
+                  name: product_id
+                  value: 4
+              - column:
+                  name: product_name
+                  value: AUDNZD FRD Exp16Jul2021
+              - column:
+                  name: trade_date
+                  value: 2020-04-09 00.00.00
+              - column:
+                  name: qty
+                  value: 200000
+              - column:
+                  name: buy_sell
+                  value: S
+              - column:
+                  name: price
+                  value: "0.4256123"
+        - insert:
+            tableName: trade
+            columns:
+              - column:
+                  name: broker_name
+                  value: Broker_B
+              - column:
+                  name: trade_ref
+                  value: T-FWD-5
+              - column:
+                  name: product_id
+                  value: 5
+              - column:
+                  name: product_name
+                  value: AUDNZD FRD Exp16Jul2021
+              - column:
+                  name: trade_date
+                  value: 2020-04-08 00.00.00
+              - column:
+                  name: qty
+                  value: 100000
+              - column:
+                  name: buy_sell
+                  value: B
+              - column:
+                  name: price
+                  value: "0.422361"
