@@ -23,9 +23,9 @@ public class TradeReportControllerTest {
             .parse(TRADE_DATE_STR)
             .atStartOfDay();
     private static final String EXPECTED_CSV_CONTENT = "tradeRef,productId,productName,tradeDate,qty,buySell,price\n" +
-            "T-FWD-1,1,AUDNZD FRD Exp14Jul2021,20200408,1000000,BUY,1.067591\n" +
-            "T-FWD-2,2,AUDNZD FRD Exp15Jul2021,20200408,8000000,BUY,0.7518301\n" +
-            "T-FWD-3,3,AUDNZD FRD Exp15Jul2021,20200408,25000000,BUY,1.186073\n";
+            "T-FWD-1,1,AUDNZD FRD Exp14Jul2021,20200408,1000000,B,1.067591\n" +
+            "T-FWD-2,2,AUDNZD FRD Exp15Jul2021,20200408,8000000,B,0.7518301\n" +
+            "T-FWD-3,3,AUDNZD FRD Exp15Jul2021,20200408,25000000,B,1.186073\n";
 
     @Test
     void getCsvTradeReport_ParamSupplied_RunSuccessfully() {

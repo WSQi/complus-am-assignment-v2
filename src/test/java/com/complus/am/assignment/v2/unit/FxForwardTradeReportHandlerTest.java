@@ -50,6 +50,7 @@ public class FxForwardTradeReportHandlerTest {
         final var productName = "AUDNZD FRD Exp14Jul2021";
         final var qty = BigInteger.TEN;
         final var buySell = BuySellType.BUY;
+        final var expectedBuySell = "B";
         final var price = new BigDecimal("1.067591000");
         final var expectedPrice = "1.067591";
         final var trade = Trade.builder()
@@ -69,7 +70,7 @@ public class FxForwardTradeReportHandlerTest {
         assertEquals("productName", productName, tradeReports.get(0).getProductName());
         assertEquals("tradeDate", expectedTradeDate, tradeReports.get(0).getTradeDate());
         assertEquals("qty", qty, tradeReports.get(0).getQty());
-        assertEquals("buySell", buySell, tradeReports.get(0).getBuySell());
+        assertEquals("buySell", expectedBuySell, tradeReports.get(0).getBuySell());
         assertEquals("price", expectedPrice, tradeReports.get(0).getPrice());
     }
 

@@ -1,6 +1,5 @@
 package com.complus.am.assignment.v2.dto;
 
-import com.complus.am.assignment.v2.enumeration.BuySellType;
 import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvBindByPosition;
 import lombok.AllArgsConstructor;
@@ -33,7 +32,7 @@ public class FxForwardTradeReport extends TradeReport {
     private BigInteger qty;
     @CsvBindByName(column = "buySell")
     @CsvBindByPosition(position = 5)
-    private BuySellType buySell;
+    private String buySell;
     @CsvBindByName(column = "price")
     @CsvBindByPosition(position = 6)
     private String price;

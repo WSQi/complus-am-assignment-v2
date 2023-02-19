@@ -12,6 +12,7 @@ import java.time.format.DateTimeFormatter;
 public interface TradeReportMapper {
 
     @Mapping(target = "tradeDate", expression = "java(localDateTimeToString(trade))")
+    @Mapping(target = "buySell", expression = "java(buySellTypeToString(trade))")
     @Mapping(target = "price", expression = "java(bigDecimalToString(trade))")
     FxForwardTradeReport tradeToFxForwardTradeReport(Trade trade);
 
@@ -22,6 +23,14 @@ public interface TradeReportMapper {
         }
         return trade.getTradeDate()
                 .format(DateTimeFormatter.ofPattern("yyyyMMdd"));
+    }
+
+    @Named("buySellTypeToString")
+    default String buySellTypeToString(Trade trade) {
+        if (trade.getBuySell() == null) {
+            return null;
+        }
+        return trade.getBuySell().getValue();
     }
 
     @Named("bigDecimalToString")
