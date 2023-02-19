@@ -24,8 +24,9 @@ public class TradeReportMapperTest {
     @Test
     void tradeToFxForwardTradeReport_EntitySupplied_RunSuccessfully() {
         final var tradeRef = "T-FWD-1";
-        final var expectedTradeDate = "2022-04-08";
-        final var tradeDate = LocalDate.parse(expectedTradeDate).atStartOfDay();
+        final var expectedTradeDate = "20220408";
+        final var tradeDateStr = "2022-04-08";
+        final var tradeDate = LocalDate.parse(tradeDateStr).atStartOfDay();
         final var productId = 1L;
         final var productName = "AUDNZD FRD Exp14Jul2021";
         final var qty = BigInteger.TEN;

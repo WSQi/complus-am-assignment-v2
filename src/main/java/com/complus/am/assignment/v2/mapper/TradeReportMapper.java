@@ -21,7 +21,7 @@ public interface TradeReportMapper {
             return null;
         }
         return trade.getTradeDate()
-                .format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+                .format(DateTimeFormatter.ofPattern("yyyyMMdd"));
     }
 
     @Named("bigDecimalToString")
