@@ -20,6 +20,15 @@ Execute the following command:
 
 # Generate sample response
 
+Expected output:
+
+```
+tradeRef,productId,productName,tradeDate,qty,buySell,price
+T-FWD-1,1,AUDNZD FRD Exp14Jul2021,20200408,1000000,B,1.067591
+T-FWD-2,2,AUDNZD FRD Exp15Jul2021,20200408,8000000,B,0.7518301
+T-FWD-3,3,AUDNZD FRD Exp15Jul2021,20200408,25000000,B,1.186073
+```
+
 ## Terminal
 
 Execute the following command:
@@ -51,3 +60,7 @@ Click `Execute`
 To view the db records, navigate to [h2-console](http://localhost:8080/api/h2-console/)
 
 Default h2 db file was located at `~/h2/complus-am-assignment-v2`
+
+![h2-console-login](./docs/SCR-20230219-mds.png)
+
+![h2-console-records](./docs/SCR-20230219-mfb.png)
