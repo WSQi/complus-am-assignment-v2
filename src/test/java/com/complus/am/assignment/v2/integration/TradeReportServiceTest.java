@@ -31,10 +31,10 @@ public class TradeReportServiceTest {
     private static final String TRADE_DATE = "2022-04-08";
 
     @Test
-    void getCsvTradeReport_NoHandlerFound_ExceptionThrown() {
+    void getCsvTradeReport_UnknownReportType_ExceptionThrown() {
         assertThatThrownBy(() ->
-                tradeReportService.getCsvTradeReport(TradeReportType.NonExistenceTradeReport, BROKER_NAME, TRADE_DATE))
-                .isInstanceOf(IllegalArgumentException.class);
+                tradeReportService.getCsvTradeReport(TradeReportType.fromValue("UNKNOWN"), BROKER_NAME, TRADE_DATE))
+                .isInstanceOf(NullPointerException.class);
     }
 
     @Test

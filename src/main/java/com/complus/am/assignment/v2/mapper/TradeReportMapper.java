@@ -12,6 +12,7 @@ import java.time.format.DateTimeFormatter;
 public interface TradeReportMapper {
 
     @Mapping(target = "tradeDate", expression = "java(localDateTimeToString(trade))")
+    @Mapping(target = "price", expression = "java(bigDecimalToString(trade))")
     FxForwardTradeReport tradeToFxForwardTradeReport(Trade trade);
 
     @Named("localDateTimeToString")
@@ -21,6 +22,14 @@ public interface TradeReportMapper {
         }
         return trade.getTradeDate()
                 .format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+    }
+
+    @Named("bigDecimalToString")
+    default String bigDecimalToString(Trade trade) {
+        if (trade.getPrice() == null) {
+            return null;
+        }
+        return trade.getPrice().stripTrailingZeros().toPlainString();
     }
 
 }

@@ -16,17 +16,18 @@ public class CsvReportService {
 
     @SneakyThrows
     public byte[] toCsv(List<String> headers, List<TradeReport> tradeReports) {
-        ByteArrayOutputStream os = new ByteArrayOutputStream();
-        OutputStreamWriter writer = new OutputStreamWriter(os);
-        writer.append(headers.stream().collect(Collectors.joining(","))+"\n");
-        StatefulBeanToCsvBuilder<TradeReport> builder = new StatefulBeanToCsvBuilder<>(writer);
-        StatefulBeanToCsv<TradeReport> beanWriter = builder
-                .withSeparator(',')
-                .withApplyQuotesToAll(false)
-                .build();
-        beanWriter.write(tradeReports);
-        writer.close();
-        return os.toByteArray();
+        try (ByteArrayOutputStream os = new ByteArrayOutputStream();
+             OutputStreamWriter writer = new OutputStreamWriter(os)) {
+            writer.append(headers.stream().collect(Collectors.joining(","))+"\n");
+            StatefulBeanToCsvBuilder<TradeReport> builder = new StatefulBeanToCsvBuilder<>(writer);
+            StatefulBeanToCsv<TradeReport> beanWriter = builder
+                    .withSeparator(',')
+                    .withApplyQuotesToAll(false)
+                    .build();
+            beanWriter.write(tradeReports);
+            writer.flush();
+            return os.toByteArray();
+        }
     }
 
 }

@@ -30,7 +30,8 @@ public class TradeReportMapperTest {
         final var productName = "AUDNZD FRD Exp14Jul2021";
         final var qty = BigInteger.TEN;
         final var buySell = BuySellType.BUY;
-        final var price = BigDecimal.TEN;
+        final var price = new BigDecimal("1.067591000");
+        final var expectedPrice = "1.067591";
         final var trade = Trade.builder()
                 .tradeRef(tradeRef)
                 .productId(productId)
@@ -47,7 +48,7 @@ public class TradeReportMapperTest {
         assertEquals("tradeDate", expectedTradeDate, actual.getTradeDate());
         assertEquals("qty", qty, actual.getQty());
         assertEquals("buySell", buySell, actual.getBuySell());
-        assertEquals("price", price, actual.getPrice());
+        assertEquals("price", expectedPrice, actual.getPrice());
     }
 
 }

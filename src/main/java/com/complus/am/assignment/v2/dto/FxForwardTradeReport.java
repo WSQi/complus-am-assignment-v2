@@ -8,7 +8,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-import java.math.BigDecimal;
 import java.math.BigInteger;
 
 @Data
@@ -37,6 +36,6 @@ public class FxForwardTradeReport extends TradeReport {
     private BuySellType buySell;
     @CsvBindByName(column = "price")
     @CsvBindByPosition(position = 6)
-    private BigDecimal price;
+    private String price;
 
 }

@@ -9,8 +9,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public enum TradeReportType {
-    FxForwardTradeReport("fxForward"),
-    NonExistenceTradeReport("nonExistence");
+    FxForwardTradeReport("fxForward");
 
     private String value;
 
