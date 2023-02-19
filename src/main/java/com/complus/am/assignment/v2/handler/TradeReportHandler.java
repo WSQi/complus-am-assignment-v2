@@ -13,10 +13,22 @@ import java.util.List;
 
 public interface TradeReportHandler {
 
+    /**
+     * Used for matching the correct handler for TradeReportRegistry
+     * @return enum TradeReportType
+     */
     TradeReportType getTradeReportType();
 
+    /**
+     * For headers generation
+     * @return Class with signature of <? extends TradeReport>
+     */
     Class getTypeClass();
 
+    /**
+     * Default implementation of headers generation
+     * @return List of headers in String format
+     */
     default List<String> buildHeaders() {
         Class clazz = getTypeClass();
         return Arrays.stream(clazz.getDeclaredFields() )
@@ -27,6 +39,12 @@ public interface TradeReportHandler {
                 .toList();
     }
 
+    /**
+     * Concrete implementation of retrieving TradeReports
+     * @param brokerName
+     * @param tradeDate
+     * @return List of subclass of TradeReport
+     */
     List<? extends TradeReport> handle(String brokerName, LocalDateTime tradeDate);
 
 }

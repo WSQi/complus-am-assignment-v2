@@ -11,7 +11,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 import static org.springframework.test.util.AssertionErrors.assertEquals;
 
@@ -23,24 +23,31 @@ public class TradeReportMapperTest {
 
     @Test
     void tradeToFxForwardTradeReport_EntitySupplied_RunSuccessfully() {
-        final var now = LocalDateTime.now();
+        final var tradeRef = "T-FWD-1";
+        final var expectedTradeDate = "2022-04-08";
+        final var tradeDate = LocalDate.parse(expectedTradeDate).atStartOfDay();
+        final var productId = 1L;
+        final var productName = "AUDNZD FRD Exp14Jul2021";
+        final var qty = BigInteger.TEN;
+        final var buySell = BuySellType.BUY;
+        final var price = BigDecimal.TEN;
         final var trade = Trade.builder()
-                .tradeRef("T-FWD-1")
-                .productId(1L)
-                .productName("AUDNZD FRD Exp14Jul2021")
-                .tradeDate(now)
-                .qty(BigInteger.TEN)
-                .buySell(BuySellType.BUY)
-                .price(BigDecimal.TEN)
+                .tradeRef(tradeRef)
+                .productId(productId)
+                .productName(productName)
+                .tradeDate(tradeDate)
+                .qty(qty)
+                .buySell(buySell)
+                .price(price)
                 .build();
         var actual = tradeReportMapper.tradeToFxForwardTradeReport(trade);
-        assertEquals("tradeRef", "T-FWD-1", actual.getTradeRef());
-        assertEquals("productId", 1L, actual.getProductId());
-        assertEquals("productName", "AUDNZD FRD Exp14Jul2021", actual.getProductName());
-        assertEquals("tradeDate", now.toString(), actual.getTradeDate().toString());
-        assertEquals("qty", BigInteger.TEN, actual.getQty());
-        assertEquals("buySell", BuySellType.BUY, actual.getBuySell());
-        assertEquals("price", BigDecimal.TEN, actual.getPrice());
+        assertEquals("tradeRef", tradeRef, actual.getTradeRef());
+        assertEquals("productId", productId, actual.getProductId());
+        assertEquals("productName", productName, actual.getProductName());
+        assertEquals("tradeDate", expectedTradeDate, actual.getTradeDate());
+        assertEquals("qty", qty, actual.getQty());
+        assertEquals("buySell", buySell, actual.getBuySell());
+        assertEquals("price", price, actual.getPrice());
     }
 
 }
