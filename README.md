@@ -35,13 +35,15 @@ Execute the following command:
 
 ```bash
 curl -X 'GET' \
-  'http://localhost:8080/api/v1/report/trade?reportType=fxForward&brokerName=Broker_A&tradeDate=2020-04-08' \
+  'http://localhost:8080/api/v1/report/trade/fxForward?brokerName=Broker_A&tradeDate=2020-04-08' \
   -H 'accept: text/csv'
 ```
 
 ## Swagger UI
 
 Navigate to [swagger-ui](http://localhost:8080/api/swagger-ui/index.html#/trade-report-controller/getCsvTradeReport)
+
+![h2-console-login](./docs/SCR-20230219-n58.png)
 
 Click `Try it now` with the following data entered:
 
